@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<input type="file" id="file">
+<p><button onclick="FuncionC()">Si el archivo es .c click aqui</button> </p>
+
+<p><button onclick="FuncionP()">Si el archivo es .pas click aqui</button> </p>
+<p>
+<button onclick="FuncionB()">Si el archivo es .bas click aqui</button> </p>        
+
+<p id="texto"></p>
+<p id="Evaluacion"></p>
+
+
+<script>
+var A = 0; // numero de lineas comentadas
+var B = 0; // numero de lineas totales
+var array =[]; // array en el que guardo las lineas de los archivos
+var Comentario; //una variable que uso para saber si estoy leyendo un comentario o no
+
+function FuncionP () {
+  
+//funcion que analiza los script en Pascal
+var file = document.getElementById('file').files;//agarro los file y se los asigno a una variable de tipo file, esta y blob son los unicos tipos que soporta html 5 segun pude encontrar
+
+
+var reader=new FileReader(); //Esto es un reader ,es el objeto que va a almacenar lo que lei para luego cambiarlo a un string
+reader.readAsText(file); //aca esta el problema en teoria con pasarle el file tendria que leer pero me sale el error que necesita el codificador pero el texto en si no esta codifico y en la pagina de html me parece que es opcional
+
+var ComentarioAbierto=0; //el objetivo principal de esta variable es por si se da el caso que alguien abrio un comentario con una llave y luego puso un enter sin cerrarlo. Como una de las condiciones para que algo deje de ser comentario es un salto de linea al preguntar si sigues dentro de un comentario abierto esto soluciona el problema. 
+
+var string=reader.result;//En teoria ahora el archivo file esta en  reader como un string asi que de esta forma lo saco de ahi
+var array = string.split(' '); //ahora pongo cada palabra del string dentro de una seccion de un array
+	B = array.length; // guardo aqui la cantidad total de lineas para el calculo final
+  for (i = 0; i < array.length; i++) { 	
+	if (Comentario= 1 ){
+	//Est siginifica que luego de hacer todas las pruebas la palabra si pertenece a un Comentario
+	A = A + 1;
+	//luego de decidir si esto es un comentario o no sumo a la variable A	 
+	}
+	  //recorro el array
+	var temp = array[i];	
+	if((temp.substring(0,1) == "{$")&& (temp.substring(temp.leght) == "}" )) {
+		  // en el caso de encontrar una directiva sencillamente la ignoro ya que si una palabra comienza con {$ y termina con } es una de ellas
+    		{ continue; }
+    		
+		}
+		//cargo el valor del array de forma temporal en un string para usar substring con el final de saber como empieza cada linea
+		
+	if( temp.substring(0,1) == "//") { //pregunto si las dos primeras lineas son // si es cierto pone comentario en 1
+		  Comentario = 1;
+		  { continue; } //uso el continue para saltar a la siguiente palabra ya que si se cumplio esta condicion se dejo en claro que esto es un simbolo que cambia el estado de comentario y por lo tanto hacer mas preguntas no es necesario
+		}
+		
+	if( (temp.substring(temp.leght) == '\n') && (ComentarioAbierto=0)) { //pregunto si el ultimo caracter es un salto de linea en ese caso ya deja de ser comentario,esto se debe a que como divido las palabras por espacio el enter siempre debe estar al final para que deje de contar como mentario de este tipo
+		  Comentario = 0;
+		   { continue; }
+		}
+	if( (temp.substring(0) == "{")) {
+		  // checa si el primer caracter es { si es cierto pone comentario en 1
+		  
+			ComentarioAbierto=1;
+    		Comentario = 1;
+    		 { continue; }
+		}
+	if( temp.substring(temp.leght) == "}" ) {
+		  // en el caso que el ultimo caracter de la palabra sea } significa que cerro el comentario y lo que sigue a este ya no lo es por lo tanto comentario cambia a 0
+    		Comentario = 0;
+			
+			ComentarioAbierto=0;
+    		{ continue; }
+		}
+	}
+	//cuando termino el for calculo el promedio
+	CalcularPromedio;
+}	
+						
+function FuncionB () {
+  
+//funcion que analiza los script en Basic
+var file = document.getElementById('file').files;
+
+
+var reader=new FileReader();
+reader.readAsText(file); 
+ 
+
+var string=reader.result;
+var array = string.split(' '); 
+B = array.length; 
+ for (i = 0; i < array.length; i++) {
+	 
+		if (Comentario= 1 ){
+		A = A + 1; 
+		}
+	  //recorro el array
+		var temp = array[i];
+		
+		if( (temp.substring(0) == '"')) {
+		  // checa si el primer caracter es " si es cierto pone comentario en 1
+    		Comentario = 1;
+    		 { continue; }
+		}
+	
+	
+		if( temp.substring(temp.leght) == '"') {
+		  // en el caso que el ultimo caracter de la palabra sea " significa que cerro el comentario y lo que sigue a este ya no lo es por lo tanto comentario cambia a 0
+    		Comentario = 0;
+    		{ continue; }
+		}
+		
+		
+	
+	}
+		
+	CalcularPromedio;
+}	
+
+function FuncionC () {
+  
+//funcion que analiza los script en C
+var file = document.getElementById('file').files;
+
+
+var reader=new FileReader();
+reader.readAsText(file); 
+ 
+var ComentarioAbierto=0;
+var string=reader.result;
+var array = string.split(' '); 
+B = array.length; 
+	
+ for (i = 0; i < array.length; i++) {
+	  //recorro el array
+		var temp = array[i];
+		
+		if (Comentario= 1 ){
+		A = A + 1; 
+		}		
+				
+		if( temp.substring(0,1) == "//*") {
+		  Comentario = 1;
+		  { continue; } 		}
+		
+		if( (temp.substring(temp.leght) == '\n') && (ComentarioAbierto=0)  ) { 
+		  Comentario = 0;
+		   { continue; }
+		}
+		
+		
+		if( (temp.substring(0,1) == "/*")) {
+		  // checa si el primer caracter es { si es cierto pone comentario en 1
+    		Comentario = 1;
+			ComentarioAbierto=1;
+    		 { continue; }
+		}
+	
+	
+		if( temp.substring(temp.leght-1,temp.leght) == "*/" ) {
+		  	
+			ComentarioAbierto=0;
+    		Comentario = 0;
+    		{ continue; }
+		}
+		
+		
+		
+	
+	}
+		
+	if (Comentario= 1 ){
+	A = A + 1; 
+	}
+	CalcularPromedio;
+}	
+
+
+
+function CalcularPromedio () {
+     if ( A *100 / B < 5) {	
+	 
+   		document.getElementById("Evaluacion").innerHTML = "Esta mal comentado";
+	
+     }
+	 
+	 if ( (A *100 / B > 5) && ( A *100 / B <= 10)) {	
+	 
+    	document.getElementById("Evaluacion").innerHTML = "Esta regular comentado";	
+     }
+	 
+	 if ( (A *100 / B > 10 ) && ( A *100 / B <= 15)) {	
+	    document.getElementById("Evaluacion").innerHTML = "Esta bien comentado";		
+     }
+	 
+	 if ( (A *100 / B < 15) ) {		
+	    document.getElementById("Evaluacion").innerHTML = "Esta muy bien comentado";	
+     }
+	 
+	var A = 0;
+	var B = 0;
+}
+
+
+
+
+	
+</script>
+
+</body>
+</html>

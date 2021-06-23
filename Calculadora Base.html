@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+</head>
+
+<body>
+
+   <label for="1">   Pozo Atributos </label>  
+  
+  <p id="pozoatributos">400</p> 
+ 
+   
+
+  <ul><li>
+   <button onclick ="ActualizarPozoAtributos1()"  id="Exp 1" >Experiencia inicial: 400</button> 
+  </li><li>
+   <button onclick ="ActualizarPozoAtributos2()"   id="Exp 2">
+Experiencia inicial (Promocion apertura): 800</button>
+  </li><li>
+   <button onclick ="ActualizarPozoAtributos3()"  id="Exp 3">Experiencia inicial (Habilidad desarrollo): 300</button>
+  </li><li>
+   <button onclick ="ActualizarPozoAtributos4()" id="Exp 4" >
+Experiencia Inicial (Habilidad desarrollo + promocion apertura): 700</button>
+  </li>
+  
+  
+  </ul>
+  
+  
+   <label for="2">   Recuerda no sumar puntos hasta que hayas escogido un tipo de inicio</label>  
+
+  <p>ATRIBUTOS</p>
+  <ul>
+    <li>Poder:
+    
+      <input type="number" id="poder" >
+      
+      <button onclick="SumarAN()">Ok</button>
+      <p id="AN">0</p> 
+     
+    </li>
+ 
+  <li>Resistencia: 
+    
+      <input type="number" id="Resistencia">
+      <button onclick="SumarAS()">Ok</button>
+      <p id="AS">0</p> 
+     
+    </li>
+    <li>Agilidad: 
+    	 <input type="number" id="Agilidad">
+      <button onclick="SumarDN()">Ok</button>
+      <p id="DN">0</p> 
+     
+    </li>
+    <li>Destreza: 
+    	 <input type="number" id="Destreza">
+      <button onclick="SumarDS()">Ok</button>
+      <p id="DS">0</p> 
+     
+    </li>
+    
+   
+    
+    <li>Magia:
+    	 <input type="number" id="Magia">
+      <button onclick="SumarVI()">Ok</button>
+      <p id="VI">0</p> 
+     
+    </li>
+
+		
+	  <p id="Total">Suma total</p> 
+ 
+  </ul>   
+  </ul>
+
+
+
+<script> 
+
+
+var PozoAtributos,
+
+    AN,
+    AS,
+    DN,
+    DS,
+    VE,
+	VI,
+	
+
+	vida,
+	numero;
+	
+PozoAtributos = 400;
+
+	AN= 0;
+    AS= 0;
+    DN= 0;
+    DS= 0;
+    VE= 0;
+	VI= 0;
+
+
+ExpVAT  = 1;
+vida  = 0;
+
+//numero = 10;
+//funciones atributos
+
+
+function total(){
+	
+	
+document.getElementById("Total").innerHTML = " [list][*][b]Poder:[/b]" + 
+AN + "[*] [b]Resistencia:[/b] "+ AS + "[*] [b]Agilidad:[/b] " + DN + " [*][b]Destreza:[/b] " + DS +  "[*] [b]Magia:[/b] " + VI + "[/list] "; 
+
+
+}
+
+
+function SumarAN() {
+
+var numero = document.getElementById("poder").value; 	
+if ( (PozoAtributos - numero) >= 0  || AN >= numero || numero - AN <= PozoAtributos ){
+	PozoAtributos = PozoAtributos + AN;
+	AN =   +numero;
+	document.getElementById("AN").innerHTML = AN; 
+	PozoAtributos = PozoAtributos - numero;
+
+
+	document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+
+
+	total(); 
+	}
+}
+
+function SumarAS() {
+	
+var numero = document.getElementById("Resistencia").value; 
+if ( (PozoAtributos - numero) >= 0 || AS >= numero || numero - AS <= PozoAtributos){
+	PozoAtributos = PozoAtributos + AS;
+
+AS =  +numero;
+document.getElementById("AS").innerHTML = AS; 
+PozoAtributos = PozoAtributos - numero;
+
+
+document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+
+
+
+	total(); 
+
+ }
+
+}
+
+function SumarDN() {
+	
+var numero = document.getElementById("Agilidad").value; 
+if ( (PozoAtributos - numero) >= 0 || DN >= numero || numero - DN <= PozoAtributos){
+	PozoAtributos = PozoAtributos + DN;
+	
+DN =  +numero;
+document.getElementById("DN").innerHTML = DN; 
+PozoAtributos = PozoAtributos - numero;
+
+
+document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+
+	total(); 
+}
+
+}
+
+
+
+function SumarDS() {
+	var numero = document.getElementById("Destreza").value; 
+	if ( (PozoAtributos - numero) >= 0 || DS >= numero || numero - DS <= PozoAtributos){
+		PozoAtributos = PozoAtributos + DS;
+
+DS =  +numero;
+document.getElementById("DS").innerHTML = DS; 
+PozoAtributos = PozoAtributos - numero;
+
+
+document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+ 
+	total(); 
+
+}
+}
+function SumarVE() {
+	var numero = document.getElementById("Velocidad").value; 	
+	if ( (PozoAtributos - numero) >= 0 || VE >= numero || numero - VE <= PozoAtributos){
+		PozoAtributos = PozoAtributos + VE;
+	
+VE =  +numero;
+document.getElementById("VE").innerHTML = VE; 
+PozoAtributos = PozoAtributos - numero;
+
+
+document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+
+	total(); 
+
+}
+
+}
+function SumarVI() {
+	
+var numero = document.getElementById("Magia").value; 
+	if ( (PozoAtributos - numero) >= 0 || VI*2 >= numero || numero - VI*2 <= PozoAtributos){
+PozoAtributos = PozoAtributos + VI*2;
+numero = +numero /2;	
+VI =  +numero ;
+document.getElementById("VI").innerHTML = VI; 
+PozoAtributos = PozoAtributos - numero *2;
+
+
+document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+
+	total(); 
+
+}
+}
+
+function ActualizarPozoAtributos1()
+{	
+
+
+	PozoAtributos = 400;
+		
+	
+	
+	document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+	document.getElementById("Exp 2").disabled = true; 
+	document.getElementById("Exp 3").disabled = true; 
+	document.getElementById("Exp 4").disabled = true; 	
+
+	document.getElementById("Exp 1").disabled = true; 	
+
+	
+}
+
+function ActualizarPozoAtributos2()
+{	
+ 	
+
+	PozoAtributos = 800;
+	
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+	
+		document.getElementById("Exp 1").disabled = true; 
+	document.getElementById("Exp 3").disabled = true; 
+	document.getElementById("Exp 4").disabled = true; 	
+
+	document.getElementById("Exp 2").disabled = true; 	
+
+}
+
+function ActualizarPozoAtributos3()
+{	
+		
+		
+	PozoAtributos = 300;
+		
+	
+	
+	document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+		
+	document.getElementById("Exp 1").disabled = true; 
+	document.getElementById("Exp 2").disabled = true; 
+	document.getElementById("Exp 4").disabled = true; 	
+
+	document.getElementById("Exp 3").disabled = true; 	
+
+
+}
+
+
+
+function ActualizarPozoAtributos4()
+{	
+		
+		
+	PozoAtributos = 700;
+		
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+
+	document.getElementById("Exp 1").disabled = true; 
+	document.getElementById("Exp 2").disabled = true; 
+	document.getElementById("Exp 3").disabled = true; 	
+	
+	document.getElementById("Exp 4").disabled = true; 	
+
+}
+
+</script>
+
+
+
+</body>
+</html>

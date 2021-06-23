@@ -1,0 +1,717 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Calculadora de puntos</title>
+
+<style type="text/css">
+.bigboxpokrol{width:280px;background-color:#251D1F;outline:1px solid #5C0D1E;outline-offset:-5px;padding-top:15px;padding-bottom:10px;position:relative;border:2px solid #5C0D1E;}
+
+
+.dpokroltxt{color:#5C0D1E;font-family:'asap';font-size:15px;letter-spacing:2px;}
+
+.titpokrol{width:200px;height:70px;background-color:#5C0D1E;margin:5px;}
+
+.titpokroltxt{color:#DADADA;font-family:'caveat';text-transform:uppercase;font-size:23px;padding-top:8px;}
+
+
+.infopokroltxt{text-align:justify;color:#ccc;font-family:'asap';font-size:14px;line-height:14px;padding:7px;padding-top:10px;}
+body {background-color: black;}
+
+
+.column {
+    float: left;
+    width: 50%;
+}
+</style>
+
+
+
+</head>
+
+<body>
+<center>
+  <div class="column">
+<div class="bigboxpokrol">
+   <div class="titpokrol"><div class="titpokroltxt"><label for="1" > Opciones de Habilidad </label>  
+  </div> </div>
+<div class="infopokroltxt">
+
+<p>Ingresar nombre del personaje</p> 
+<input type="text" id="NombrePersonaje">
+
+<p>Ingresar nombre de la habilidad</p> 
+<input type="text" id="NombreHabilidad">
+
+<p>Ingresar tipo de habilidad </p> 
+<select id="SelectTipo">
+  <option>Pasiva</option>
+  <option>Activa</option>
+</select>
+
+
+ <li>Es un NP o Codigo Mistico?: <input type="checkbox" id="NPCheck"  onclick="SetNP()">
+   </li>
+
+
+<p>Nivel</p> 
+<input type="text" id="Nivel">
+
+ 
+<p>Usos</p> 
+<input type="text" id="Usos">  
+
+<p>Duracion</p> 
+<input type="text" id="Duracion">
+
+
+
+<p>Impacto Cuerpo A Cuerpo</p> 
+<input type="text" id="ImpactoCuerpoACuerpo">
+
+<p>Impacto Magico</p> 
+<input type="text" id="ImpactoMagico">
+
+<p>Impacto Magico Con Habilidades</p> 
+<input type="text" id="ImpactoMagicoConH">
+
+<p>Bloqueo</p> 
+<input type="text" id="Bloqueo">
+
+<p>Esquiva</p> 
+<input type="text" id="Esquiva">
+
+
+<p>Defensa Magica</p> 
+<input type="text" id="DefensaMagica">
+
+<p>Defensa Magica Con Habilidades</p> 
+<input type="text" id="DefensaMagicaConH">
+
+<p>Daño Magico</p> 
+<input type="text" id="DañoMagico">
+
+<p>Daño Fisico</p> 
+<input type="text" id="DañoFisico">
+
+<p>Daño Magico Con Habilidades</p> 
+<input type="text" id="DañoMagicoConH">
+
+<p>Dado Critico</p> 
+<input type="text" id="DadoCritico">
+
+
+<p>Poder Critico</p> 
+<input type="text" id="PoderCritico">
+
+<p>Bonus Vida</p> 
+<input type="text" id="BonusVida">
+
+<p>Regeneracion Vida</p> 
+<input type="text" id="RegeneracionVida">
+
+
+<p>Robo de Vida</p> 
+<input type="text" id="RoboVida">
+
+
+
+ <li>Defendible: <input type="checkbox" id="DefendibleCheck"  onclick="SetDefendible()">
+   </li>
+   
+
+
+
+<p>Chance Estado Miedo Fisico</p> 
+<input type="text" id="ChanceEstadoMiedoFisico">
+
+
+<p>Chance Estado Paralisis Fisico</p> 
+<input type="text" id="ChanceEstadoParalisisFisico">
+
+
+<p>Chance Estado Sangrado Fisico</p> 
+<input type="text" id="ChanceEstadoSangradoFisico">
+
+
+<p>Chance Estado Veneno Fisico</p> 
+<input type="text" id="ChanceEstadoVenenoFisico">
+
+
+<p>Chance Estado Congelar Fisico</p> 
+<input type="text" id="ChanceEstadoCongelarFisico">
+
+
+<p>Chance Estado Quemar Fisico</p> 
+<input type="text" id="ChanceEstadoQuemarFisico">
+
+
+
+<p>Chance Estado Taunt Fisico</p> 
+<input type="text" id="ChanceEstadoTauntFisico">
+
+
+<p>Chance Estado Miedo Magico</p> 
+<input type="text" id="ChanceEstadoMiedoMagico">
+
+
+<p>Chance Estado Paralisis Magico</p> 
+<input type="text" id="ChanceEstadoParalisisMagico">
+
+<p>Chance Estado Sangrado Magico</p> 
+<input type="text" id="ChanceEstadoSangradoMagico">
+
+<p>Chance Estado Veneno Magico</p> 
+<input type="text" id="ChanceEstadoVenenoMagico">
+
+<p>Chance Estado Congelar Magico</p> 
+<input type="text" id="ChanceEstadoCongelarMagico">
+
+
+<p>Chance Estado Quemar Magico</p> 
+<input type="text" id="ChanceEstadoQuemarMagico">
+
+<p>Chance Estado Taunt Magico</p> 
+<input type="text" id="ChanceEstadoTauntMagico">
+
+
+
+<p>ResistenciaMagica</p> 
+<input type="text" id="ResistenciaMagica">
+
+
+<p>ResistenciaFisica</p> 
+<input type="text" id="ResistenciaFisica">
+
+
+<p>ResistenciaMetal</p> 
+<input type="text" id="ResistenciaMetal">
+
+
+<p>ResistenciaReal</p> 
+<input type="text" id="ResistenciaReal">
+
+
+<p>ReduccionDañoMagico</p> 
+<input type="text" id="ReduccionDañoMagico">
+
+
+<p>ReduccionDañoFisico</p> 
+<input type="text" id="ReduccionDañoFisico">
+ 
+
+<li>AuraAliados: <input type="checkbox" id="AuraAliadosCheck"  onclick="SetAuraAliados()">
+   </li>
+   
+ 
+
+<li>AuraEnemigos: <input type="checkbox" id="AuraEnemigosCheck"  onclick="SetAuraEnemigos()">
+   </li>
+
+<p>DañoReflejado</p> 
+<input type="text" id="DañoReflejado">
+
+<p>FamiliarVida</p> 
+<input type="text" id="FamiliarVida">
+ 
+
+
+<p>AntiArmy</p> 
+<input type="text" id="AntiArmy">
+
+
+<li>EsUnRM: <input type="checkbox" id="EsUnRMCheck"  onclick="SetEsUnRM()">
+   </li>
+
+<li>CuestaAccion: <input type="checkbox" id="CuestaAccionCheck"  onclick="SetCuestaAccion()">
+   </li>
+   
+
+<p>Curacion</p> 
+<input type="text" id="Curacion">
+
+ 
+ 
+ <p>Efectivo contra</p> 
+<select id="SelectContra">
+
+ <option>Nada</option>
+ <option>Dragon</option>
+ <option>Divinidad</option>
+ <option>Espiritu</option>
+ <option>DeadApostle</option>
+ <option>Oni</option>
+ <option>Werewolf</option>
+ <option>Magi</option>
+ <option>HumanoNormal</option>
+ <option>Homunculo</option>
+ 
+</select>
+
+<p>Otorga raza </p> 
+<select id="SelectOtorga">
+
+ <option>Nada</option>
+ <option>Dragon</option>
+ <option>Divinidad</option>
+ <option>Espiritu</option>
+ <option>DeadApostle</option>
+ <option>Oni</option>
+ <option>Werewolf</option>
+ <option>Magi</option>
+ <option>HumanoNormal</option>
+ <option>Homunculo</option>
+</select>
+ 
+
+</div></div>
+</div>
+
+ <div class="column">
+<div class="bigboxpokrol">
+ <div class="titpokrol"><div class="titpokroltxt"><label for="1"> Sumas </label>  
+  </div> </div>
+<div class="infopokroltxt">
+
+
+  
+<button onclick ="Actualizar()">CrearQuerry</button>
+<p id="Total2">Suma total</p> 
+          
+          
+          
+          
+          
+ 
+ 
+
+  </ul>
+
+</div>
+</div></div>
+
+
+
+
+
+
+</center> 
+
+<script> 
+
+
+	  
+var Nombre = "";
+var Descripcion= "";
+var	Tipo=  "";
+	//pasiva o activa
+var	EsNp=  0;
+var	Nivel=  0;
+var	Usos=  0;
+var	Duracion=  0;
+var	ImpactoCuerpoACuerpo=  0;
+var	ImpactoMagico  =   0;
+var	ImpactoMagicoConHabilidades =  0;
+var	Bloqueo  =   0;
+var	Esquiva =  0;
+var	DefensaMagica  =  0;
+var	DefensaMagicaConHabilidades  = 0;
+var	DanoMagico  =  0;
+var	DanoFisico  = 0;
+var	DanoMagicoConHabilidades  =  0;
+var	DadoCritico = 0;
+var	PoderCritico =  0;
+var	BonusVida= 0;
+var	RegeneracionVida= 0;
+var	RoboDeVida= 0;
+var	Defendible= 0;
+	/*Estados*/
+var	ChanceEstadoMiedoFisico= 0;
+var	ChanceEstadoParalisisFisico= 0;
+var	ChanceEstadoSangradoFisico= 0;
+var	ChanceEstadoVenenoFisico= 0;
+var	ChanceEstadoCongelarFisico= 0;
+var	ChanceEstadoQuemarFisico= 0;
+var	ChanceEstadoTauntFisico= 0;
+var	ChanceEstadoMiedoMagico= 0;
+var	ChanceEstadoParalisisMagico= 0;
+var	ChanceEstadoSangradoMagico= 0;
+var	ChanceEstadoVenenoMagico=0;
+var	ChanceEstadoCongelarMagico= 0;
+var	ChanceEstadoQuemarMagico= 0;
+var	ChanceEstadoTauntMagico= 0;
+	/*Resistencia*/
+var	ResistenciaMagica= 0;
+var	ResistenciaFisica= 0;
+var	ResistenciaMetal= 0;
+var	ResistenciaReal=0;
+var	ReduccionDañoMagico= 0;
+var	ReduccionDañoFisico=0;
+	/*Auras*/
+var	AuraAliados= 0;
+var	AuraEnemigos=0;
+	/*Misc*/
+var	DañoReflejado= 0;
+var	FamiliarVida= 0;
+var	Activada = 0;
+var	AntiArmy=0;
+var	EsUnRM= 0;
+var	CuestaAccion= 0;
+
+var	Curacion=0;
+var HabilidadHermana = "";
+	//nombre de la raza
+var	EfectivaContra="";
+var	OtorgaRaza="";
+
+var HabilidadHermana = 0;
+ 
+
+function SetEsUnRM() {
+
+  var checkBox = document.getElementById("EsUnRMCheck");
+ 
+  if (checkBox.checked == true){
+    EsUnRM=  1;
+  } else {
+    EsUnRM=  0;
+  }
+} 
+
+function SetCuestaAccion() {
+
+  var checkBox = document.getElementById("CuestaAccionCheck");
+ 
+  if (checkBox.checked == true){
+    CuestaAccion=  1;
+  } else {
+    CuestaAccion=  0;
+  }
+} 
+
+function SetNP() {
+
+  var checkBox = document.getElementById("NPCheck");
+ 
+  if (checkBox.checked == true){
+    EsNp=  1;
+  } else {
+    EsNp=  0;
+  }
+} 
+
+
+
+function SetDefendible() {
+
+  var checkBox = document.getElementById("DefendibleCheck");
+ 
+  if (checkBox.checked == true){
+    Defendible=  1;
+  } else {
+    Defendible=  0;
+  }
+} 
+
+
+function SetAuraAliados() {
+
+  var checkBox = document.getElementById("AuraAliadosCheck");
+ 
+  if (checkBox.checked == true){
+    AuraAliados=  1;
+  } else {
+    AuraAliados=  0;
+  }
+} 
+
+function SetAuraEnemigos() {
+
+  var checkBox = document.getElementById("AuraEnemigosCheck");
+ 
+  if (checkBox.checked == true){
+    AuraEnemigos=  1;
+  } else {
+    AuraEnemigos=  0;
+  }
+} 
+
+function Actualizar()
+{
+
+ 
+if(document.getElementById("NombrePersonaje").value != ""){
+	 
+	 Nombre = document.getElementById("NombrePersonaje").value;
+	 
+}
+           
+
+ 
+if(document.getElementById("NombreHabilidad").value != ""){
+	
+	Descripcion= document.getElementById("NombreHabilidad").value;
+}
+ 
+ 
+ 
+Tipo= document.getElementById("SelectTipo").options.selectedIndex;
+
+if(document.getElementById("Nivel").value != ""){
+	
+	Nivel= document.getElementById("Nivel").value;
+}
+ 
+
+	//pasiva o activa
+if(document.getElementById("Nivel").value != ""){
+	
+	Nivel= document.getElementById("Nivel").value;
+}
+
+if(document.getElementById("Usos").value != ""){
+	
+	Usos= document.getElementById("Usos").value;
+} 
+
+if(document.getElementById("Duracion").value != ""){
+	
+	Duracion= document.getElementById("Duracion").value;
+} 
+
+
+
+if(document.getElementById("ImpactoCuerpoACuerpo").value != ""){
+	
+	ImpactoCuerpoACuerpo= document.getElementById("ImpactoCuerpoACuerpo").value;
+} 
+
+  if(document.getElementById("ImpactoMagico").value != ""){
+	
+	ImpactoMagico= document.getElementById("ImpactoMagico").value;
+} 
+ 
+ 
+ 
+  if(document.getElementById("ImpactoMagicoConH").value != ""){
+	
+	ImpactoMagicoConHabilidades= document.getElementById("ImpactoMagicoConH").value;
+} 
+
+
+  if(document.getElementById("Bloqueo").value != ""){
+	
+	Bloqueo= document.getElementById("Bloqueo").value;
+} 
+   
+  if(document.getElementById("Esquiva").value != ""){
+	
+	Esquiva= document.getElementById("Esquiva").value;
+} 
+   if(document.getElementById("DefensaMagica").value != ""){
+	
+	DefensaMagica= document.getElementById("DefensaMagica").value;
+} 
+  if(document.getElementById("DefensaMagicaConH").value != ""){
+	
+	DefensaMagicaConHabilidades= document.getElementById("DefensaMagicaConH").value;
+} 
+        
+  if(document.getElementById("DañoMagico").value != ""){
+	
+	DanoMagico= document.getElementById("DañoMagico").value;
+} 		
+		  
+  if(document.getElementById("DañoMagico").value != ""){
+	
+	DanoMagico= document.getElementById("DañoMagico").value;
+} 		
+
+ if(document.getElementById("DañoFisico").value != ""){
+	
+	DanoFisico= document.getElementById("DañoFisico").value;
+} 		
+	
+	
+if(document.getElementById("DañoMagicoConH").value != ""){
+	
+	DanoMagicoConHabilidades= document.getElementById("DañoMagicoConH").value;
+} 		
+			    
+if(document.getElementById("DañoMagicoConH").value != ""){
+	
+	DanoMagicoConHabilidades= document.getElementById("DañoMagicoConH").value;
+} 	
+
+	    
+if(document.getElementById("DadoCritico").value != ""){
+	
+	DadoCritico= document.getElementById("DadoCritico").value;
+} 	
+     
+if(document.getElementById("PoderCritico").value != ""){
+	
+	PoderCritico= document.getElementById("PoderCritico").value;
+} 	
+  
+  
+if(document.getElementById("BonusVida").value != ""){
+	
+	BonusVida= document.getElementById("BonusVida").value;
+} 	 
+
+if(document.getElementById("RegeneracionVida").value != ""){
+	
+	RegeneracionVida= document.getElementById("RegeneracionVida").value;
+} 	 
+
+if(document.getElementById("RoboVida").value != ""){
+	
+	RoboDeVida= document.getElementById("RoboVida").value;
+} 	 
+
+if(document.getElementById("RegeneracionVida").value != ""){
+	
+	RegeneracionVida= document.getElementById("RegeneracionVida").value;
+} 	 
+ 
+	/*Estados*/ 
+if(document.getElementById("ChanceEstadoMiedoFisico").value != ""){
+	
+	ChanceEstadoMiedoFisico= document.getElementById("ChanceEstadoMiedoFisico").value;
+} 	  
+if(document.getElementById("ChanceEstadoParalisisFisico").value != ""){
+	
+	ChanceEstadoParalisisFisico= document.getElementById("ChanceEstadoParalisisFisico").value;
+} 	  
+if(document.getElementById("ChanceEstadoSangradoFisico").value != ""){
+	
+	ChanceEstadoSangradoFisico= document.getElementById("ChanceEstadoSangradoFisico").value;
+} 	  
+if(document.getElementById("ChanceEstadoVenenoFisico").value != ""){
+	
+	ChanceEstadoVenenoFisico= document.getElementById("ChanceEstadoVenenoFisico").value;
+} 	  
+if(document.getElementById("ChanceEstadoCongelarFisico").value != ""){
+	
+	ChanceEstadoCongelarFisico= document.getElementById("ChanceEstadoCongelarFisico").value;
+} 	  
+if(document.getElementById("ChanceEstadoQuemarFisico").value != ""){
+	
+	ChanceEstadoQuemarFisico= document.getElementById("ChanceEstadoQuemarFisico").value;
+} 	  
+if(document.getElementById("ChanceEstadoTauntFisico").value != ""){
+	
+	ChanceEstadoTauntFisico= document.getElementById("ChanceEstadoTauntFisico").value;
+} 	  
+if(document.getElementById("ChanceEstadoMiedoMagico").value != ""){
+	
+	ChanceEstadoMiedoMagico= document.getElementById("ChanceEstadoMiedoMagico").value;
+} 	  
+if(document.getElementById("ChanceEstadoParalisisMagico").value != ""){
+	
+	ChanceEstadoParalisisMagico= document.getElementById("ChanceEstadoParalisisMagico").value;
+} 	  
+if(document.getElementById("ChanceEstadoSangradoMagico").value != ""){
+	
+	ChanceEstadoSangradoMagico= document.getElementById("ChanceEstadoSangradoMagico").value;
+} 	  
+if(document.getElementById("ChanceEstadoVenenoMagico").value != ""){
+	
+	ChanceEstadoVenenoMagico= document.getElementById("ChanceEstadoVenenoMagico").value;
+} 	  
+if(document.getElementById("ChanceEstadoCongelarMagico").value != ""){
+	
+	ChanceEstadoCongelarMagico= document.getElementById("ChanceEstadoCongelarMagico").value;
+} 	  
+if(document.getElementById("ChanceEstadoQuemarMagico").value != ""){
+	
+ChanceEstadoQuemarMagico= document.getElementById("ChanceEstadoQuemarMagico").value;
+} 	  
+if(document.getElementById("ChanceEstadoTauntMagico").value != ""){
+	
+	ChanceEstadoTauntMagico= document.getElementById("ChanceEstadoTauntMagico").value;
+} 	 
+	/*Resistencia*/ 
+if(document.getElementById("ResistenciaMagica").value != ""){
+	
+	ResistenciaMagica= document.getElementById("ResistenciaMagica").value;
+} 	 
+
+if(document.getElementById("ResistenciaFisica").value != ""){
+	
+	ResistenciaFisica= document.getElementById("ResistenciaFisica").value;
+} 	
+ 
+if(document.getElementById("ResistenciaMetal").value != ""){
+	
+	ResistenciaMetal= document.getElementById("ResistenciaMetal").value;
+} 	 
+
+if(document.getElementById("ResistenciaReal").value != ""){
+	
+	ResistenciaReal= document.getElementById("ResistenciaReal").value;
+} 	
+ 
+if(document.getElementById("ReduccionDañoMagico").value != ""){
+	
+	ReduccionDañoMagico= document.getElementById("ReduccionDañoMagico").value;
+} 	 
+
+if(document.getElementById("ReduccionDañoFisico").value != ""){
+	
+	ReduccionDañoFisico= document.getElementById("ReduccionDañoFisico").value;
+} 	 
+	/*Misc*/ 
+if(document.getElementById("DañoReflejado").value != ""){
+	
+	DañoReflejado= document.getElementById("DañoReflejado").value;
+} 
+ 
+if(document.getElementById("FamiliarVida").value != ""){
+	
+	FamiliarVida= document.getElementById("FamiliarVida").value;
+} 
+
+if(document.getElementById("AntiArmy").value != ""){
+	
+	AntiArmy= document.getElementById("AntiArmy").value;
+} 
+ 
+if(document.getElementById("Curacion").value != ""){
+	
+	Curacion= document.getElementById("Curacion").value;
+} 
+ 
+
+ 
+HabilidadHermana = "";
+	//nombre de la raza
+	
+EfectivaContra= document.getElementById("SelectContra").options.selectedIndex;
+ 
+
+OtorgaRaza= document.getElementById("SelectOtorga").options.selectedIndex;
+ 
+
+
+//Aca va la querry
+
+
+document.getElementById("Total2").innerHTML= "INSERT INTO `habilidades`( `nombre`, `descripcion`, `tipo`, `esNp`, `nivel`, `usos`, `duracion`, `impactoCuerpoACuerpo`, `impactoMagico`, `impactoMagicoConHabilidades`, `bloqueo`, `esquiva`, `defensaMagica`, `defensaMagicaConHabilidades`, `danoMagico`, `danoFisico`, `danoMagicoConHabilidades`, `dadoCritico`, `poderCritico`, `bonusVida`, `regeneracionVida`, `roboDeVida`, `defendible`, `chanceEstadoMiedoFisico`, `chanceEstadoParalisisFisico`, `chanceEstadoSangradoFisico`, `chanceEstadoVenenoFisico`, `chanceEstadoCongelarFisico`, `chanceEstadoQuemarFisico`, `chanceEstadoTauntFisico`, `chanceEstadoMiedoMagico`, `chanceEstadoParalisisMagico`, `chanceEstadoSangradoMagico`, `chanceEstadoVenenoMagico`, `chanceEstadoCongelarMagico`, `chanceEstadoQuemarMagico`, `chanceEstadoTauntMagico`, `resistenciaMagica`, `resistenciaFisica`, `resistenciaMetal`, `resistenciaReal`, `reduccionDañoMagico`, `reduccionDañoFisico`, `auraAliados`, `auraEnemigos`, `danoReflejado`, `familiarVida`,  `antiArmy`, `esUnRM`, `cuestaAccion`,  `curacion`, `efectivaContra`, `OtorgaRaza`) VALUES ( '"+ Nombre+ " ', '" +Descripcion+ " '," +Tipo+ "," +EsNp+ "," + Nivel + "," +Usos+ "," +Duracion+ "," +ImpactoCuerpoACuerpo+ "," +ImpactoMagico  + "," +ImpactoMagicoConHabilidades+ "," +Bloqueo  + "," +Esquiva + "," +DefensaMagica  + "," +DefensaMagicaConHabilidades+ "," +DanoMagico  + "," +DanoFisico+ "," +DanoMagicoConHabilidades+ "," +DadoCritico + "," +PoderCritico + "," +BonusVida+ "," +RegeneracionVida+ "," +RoboDeVida+ "," +Defendible+ "," +ChanceEstadoMiedoFisico+ "," +ChanceEstadoParalisisFisico+ "," +ChanceEstadoSangradoFisico+ "," +ChanceEstadoVenenoFisico+ "," +ChanceEstadoCongelarFisico+ "," +ChanceEstadoQuemarFisico+ "," +ChanceEstadoTauntFisico+ "," +ChanceEstadoMiedoMagico+ "," +ChanceEstadoParalisisMagico+ "," +ChanceEstadoSangradoMagico+ "," +ChanceEstadoVenenoMagico+ "," +ChanceEstadoCongelarMagico+ "," +ChanceEstadoQuemarMagico+ "," +ChanceEstadoTauntMagico+ "," +ResistenciaMagica+ "," +ResistenciaFisica+ "," +ResistenciaMetal+ "," +ResistenciaReal+ "," +	ReduccionDañoMagico+ "," +ReduccionDañoFisico+ "," +AuraAliados + "," +AuraEnemigos+ "," +DañoReflejado+ "," +FamiliarVida+ "," +AntiArmy+ "," +EsUnRM+ "," +CuestaAccion+ "," +Curacion+ ",'" +EfectivaContra+ "','" +OtorgaRaza+"')";
+
+
+ 
+
+ 		
+
+}
+
+
+
+
+</script>
+
+
+</body>
+</html>

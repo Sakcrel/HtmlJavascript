@@ -1,0 +1,759 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Calculadora de puntos</title>
+
+<style type="text/css">
+.bigboxpokrol{width:280px;background-color:#251D1F;outline:1px solid #5C0D1E;outline-offset:-5px;padding-top:15px;padding-bottom:10px;position:relative;border:2px solid #5C0D1E;}
+
+
+.dpokroltxt{color:#5C0D1E;font-family:'asap';font-size:15px;letter-spacing:2px;}
+
+.titpokrol{width:200px;height:70px;background-color:#5C0D1E;margin:5px;}
+
+.titpokroltxt{color:#DADADA;font-family:'caveat';text-transform:uppercase;font-size:23px;padding-top:8px;}
+
+
+.infopokroltxt{text-align:justify;color:#ccc;font-family:'asap';font-size:14px;line-height:14px;padding:7px;padding-top:10px;}
+body {background-color: black;}
+
+
+.column {
+    float: left;
+    width: 50%;
+}
+</style>
+
+
+
+</head>
+
+<body>
+<center>
+  <div class="column">
+<div class="bigboxpokrol">
+   <div class="titpokrol"><div class="titpokroltxt"><label for="1" >   Pozo de Exp inicial </label>  
+  </div> </div>
+<div class="infopokroltxt">
+<p id="pozoatributos">22</p>
+<p id="cantidad_total_de_atributos_gastados">0</p>
+
+<p>Ingresar Nombre</p> 
+          <input type="text" id="NombrePersonaje">
+          <p>Ingresar Clase</p> 
+          <input type="text" id="ClasePersonaje">
+           <p>Ingresar Nivel</p> 
+          <input type="text" id="NivelPersonaje">
+
+  <p>ATRIBUTOS</p>
+  <ul>
+    <li>Fuerza:
+    
+      <button onclick="RestarFisico()">-</button>
+      <button onclick="SumarFisico()">+</button>
+      <p id="Fisico">E</p> 
+     
+    </li>
+ 
+  <li>Agilidad: 
+    
+      <button onclick="RestarAgilidad()">-</button>
+      <button onclick="SumarAgilidad()">+</button>
+      <p id="Agilidad">E</p> 
+     
+    </li>
+    <li>Resistencia: 
+    
+      <button onclick="RestarResistencia()">-</button>
+      <button onclick="SumarResistencia()">+</button>
+      <p id="Resistencia">E</p> 
+     
+    </li>
+    <li>Mana: 
+    
+      <button onclick="RestarMana()">-</button>
+      <button onclick="SumarMana()">+</button>
+      <p id="Mana">E</p> 
+     
+    </li>
+    <li>Suerte:
+    
+      <button onclick="RestarSuerte()">-</button>
+      <button onclick="SumarSuerte()">+</button>
+      <p id="Suerte">E</p> 
+     
+    </li>
+    
+      <li>NP/MC:
+    
+      <button onclick="RestarNP()">-</button>
+      <button onclick="SumarNP()">+</button>
+      <p id="NP">E</p> 
+     
+    </li>
+
+      
+  </ul>
+  
+ 
+
+
+      
+  </ul>
+
+<li>Raza Dragon: <input type="checkbox" id="DragonCheck"  onclick="SetDragon()">
+   </li>
+<li>Raza Divinidad: <input type="checkbox" id="DivinidadCheck"  onclick="SetDivinidad()"> </li>
+<li>Raza Espiritu: <input type="checkbox" id="EspirituCheck"  onclick="SetEspiritu()"> </li>
+<li>Raza DeadApostle: <input type="checkbox" id="DeadApostleCheck"  onclick="SetDeadApostle()"> </li>
+<li>Raza Oni: <input type="checkbox" id="OniCheck"  onclick="SetOni()"> </li>
+<li>Raza Werewolf: <input type="checkbox" id="WerewolfCheck"  onclick="SetWerewolf()"> </li>
+<li>Raza Magi: <input type="checkbox" id="MagiCheck"  onclick="SetMagi()"> </li>
+<li>Raza Humano Normal: <input type="checkbox" id="NormalCheck"  onclick="SetHumanoNormal()"> </li>
+<li>Raza Homunculo: <input type="checkbox" id="HomunculoCheck"  onclick="SetHomunculo()"> </li>
+
+	  <p id="Total">Suma total</p> 
+</div></div>
+</div>
+
+ <div class="column">
+<div class="bigboxpokrol">
+ <div class="titpokrol"><div class="titpokroltxt"><label for="1"> Sumas </label>  
+  </div> </div>
+<div class="infopokroltxt">
+
+
+   <button onclick ="ActualizarEstadisticas1()" >
+Servants y terceras evoluciones especiales</button> 
+ 
+   <button onclick ="ActualizarEstadisticas2()">
+Demi-Servants, clases especiales y terceras evoluciones normales</button>
+
+   <button onclick ="ActualizarEstadisticas3()">Clases Mágicas no evolucionadas</button>
+ 	  <ul>	
+      <p > </p> 
+  
+     <li>
+     Daño Fisico:
+    
+      <p id="daño fisico">0</p> 
+     
+ 	<li>Impacto cuerpo a cuerpo (Melee) 
+ 		 <p id="impacto cuerpo a cuerpo">0</p> 
+         
+    
+ 	<li>Vida  
+ 		 <p id="vida">0</p> 
+         
+         
+ 	<li>Bloqueo  
+ 		 <p id="bloqueo">0</p> 
+         
+         
+ 	<li>Esquiva 
+ 		 <p id="esquiva">0</p> 
+         
+         
+ 	<li>  Impacto a distancia   
+ 		 <p id="impacto a distancia">0</p> 
+ 	<li>  Impacto mágico  
+ 		 <p id="impacto mágico">0</p> 
+         
+         
+ 	<li>Defensa mágica 
+ 		 <p id="defensa mágica">0</p> 
+         
+         
+ 	<li> Daño mágico 
+ 		 <p id="daño mágico">0</p> 
+         
+     <li>  Impacto mágico con habilidades 
+ 		 <p id="habilidades impacto mágico">0</p> 
+         
+         
+ 	<li>Defensa mágica con habilidades 
+ 		 <p id="habilidades defensa mágica">0</p> 
+         
+         
+ 	<li> Daño mágico con habilidades 
+ 		 <p id="habilidades daño mágico">0</p> 
+ 
+ 	<li> Rango critico
+ 		 <p id="rango critico">0</p> 
+         
+         
+          <p id="Total2">Suma total</p> 
+          
+          
+          
+          
+          
+ 
+ 
+
+  </ul>
+
+</div>
+</div></div>
+
+
+
+
+
+
+</center> 
+
+<script> 
+
+
+var 
+PozoAtributos,
+Nombre,
+Fisico,
+Agilidad,
+Clase,
+Resistencia,
+Mana,
+Suerte,
+NP,
+multiplicador,
+RazaDragon,
+RazaDivinidad,
+RazaEspiritu,
+RazaDeadApostle,
+RazaOni,
+RazaWerewolf,
+RazaMagi,
+RazaHumanoNormal,
+RazaHomunculo,
+
+cantidad_total_de_atributos_gastados
+	
+PozoAtributos = 9999999999999999999999999;
+Nombre = "";
+Clase = " ";
+Nivel = 1;
+Fisico = 1;
+Agilidad = 1;
+Resistencia = 1;
+Mana = 1;
+Suerte = 1;
+NP = 1;
+multiplicador = 1;
+cantidad_total_de_atributos_gastados = 0;
+RazaDragon=  0;
+RazaDivinidad=  0;
+RazaEspiritu=  0;
+RazaDeadApostle=  0;
+RazaOni=  0;
+RazaWerewolf=  0;
+RazaMagi=  0;
+RazaHumanoNormal=  0;
+RazaHomunculo= 0;
+
+
+
+//funciones atributos
+
+function SumarFisico() {
+	 document.getElementById("pozoatributos").innerHTML = PozoAtributos;
+
+	if ( PozoAtributos - 1 >= 0 && Fisico < 20) {
+		Fisico = Fisico + 1;
+		ActualizarAtributos(Fisico ,"Fisico")
+		PozoAtributos = PozoAtributos - 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos;
+		cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados+1;
+	Actualizar();
+		total();  	
+	}
+}
+function RestarFisico() {
+	if (Fisico > 1 ) {
+		PozoAtributos = PozoAtributos + 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+		Fisico = Fisico - 1;
+		ActualizarAtributos(Fisico ,"Fisico")
+		cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados-1;	
+	Actualizar();	
+	total(); 	
+		}
+}
+
+function SumarAgilidad() {
+	if ( PozoAtributos - 1 >= 0 && Agilidad < 20) {
+		Agilidad = Agilidad + 1;
+		ActualizarAtributos(Agilidad ,"Agilidad")
+		PozoAtributos = PozoAtributos - 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos;
+	cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados+1;
+	Actualizar();	
+	total();  
+	}
+}
+function RestarAgilidad() {
+	if (Agilidad > 1 ) {
+		PozoAtributos = PozoAtributos + 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+		Agilidad = Agilidad - 1;
+		ActualizarAtributos(Agilidad ,"Agilidad")	
+		cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados-1;	
+	Actualizar();	
+	total(); 
+	}
+}
+
+function SumarResistencia() {
+	if ( PozoAtributos - 1 >= 0 && Resistencia < 20) {
+		Resistencia = Resistencia + 1;
+		ActualizarAtributos(Resistencia ,"Resistencia")
+		PozoAtributos = PozoAtributos - 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos;
+	cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados+1;
+	Actualizar();	
+	total();  
+	}
+}
+function RestarResistencia() {
+	if (Resistencia > 1 ) {
+		PozoAtributos = PozoAtributos + 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+		Resistencia = Resistencia - 1;
+		ActualizarAtributos(Resistencia ,"Resistencia")	
+		cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados-1;	
+	Actualizar();	
+	total(); 
+	}
+}
+function SumarMana() {
+	if ( PozoAtributos - 1 >= 0 && Mana < 20) {
+		Mana = Mana + 1;
+		ActualizarAtributos(Mana ,"Mana")
+		PozoAtributos = PozoAtributos - 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos;
+	cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados+1;
+	Actualizar();	
+	total();  
+	}
+}
+function RestarMana() {
+	if (Mana > 1 ) {
+		PozoAtributos = PozoAtributos + 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+		Mana = Mana - 1;
+		ActualizarAtributos(Mana ,"Mana")	
+		cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados-1;	
+	Actualizar();	
+	total(); 
+	}
+}
+function SumarSuerte() {
+	if ( PozoAtributos - 1 >= 0 && Suerte < 20) {
+		Suerte = Suerte + 1;
+		ActualizarAtributos(Suerte ,"Suerte")
+		PozoAtributos = PozoAtributos - 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos;
+	cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados+1;
+	Actualizar();	
+	total();  
+	}
+}
+function RestarSuerte() {
+	if (Suerte > 1 ) {
+		PozoAtributos = PozoAtributos + 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+		Suerte = Suerte - 1;
+		ActualizarAtributos(Suerte ,"Suerte")	
+		cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados-1;	
+	Actualizar();	
+	total(); 
+	}
+}
+function SumarNP() {
+	if ( PozoAtributos - 1 >= 0 && NP < 20) {
+		NP = NP + 1;
+		ActualizarAtributos(NP ,"NP")
+		PozoAtributos = PozoAtributos - 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos;
+	cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados+1;
+	Actualizar();	
+	total();  
+	}
+}
+function RestarNP() {
+	if (NP > 1 ) {
+		PozoAtributos = PozoAtributos + 1;
+		document.getElementById("pozoatributos").innerHTML = PozoAtributos; 
+		NP = NP - 1;
+		ActualizarAtributos(NP ,"NP")	
+	cantidad_total_de_atributos_gastados = cantidad_total_de_atributos_gastados-1;	
+	total(); 
+	Actualizar();
+	}
+}
+
+
+
+
+function ActualizarAtributos( Nivel , Atributo )
+{
+switch(Nivel) {
+    case 1:
+		document.getElementById(Atributo).innerHTML = "E"; 
+        break;
+    case 2:
+		document.getElementById(Atributo).innerHTML = "E+"; 
+        break;
+	 case 3:
+		document.getElementById(Atributo).innerHTML = "E++"; 
+        break;
+	 case 4:
+		document.getElementById(Atributo).innerHTML = "E+++"; 
+        break;
+	 case 5:
+		document.getElementById(Atributo).innerHTML = "D"; 
+        break;
+	 case 6:
+		document.getElementById(Atributo).innerHTML = "D+"; 
+        break;
+	 case 7:
+		document.getElementById(Atributo).innerHTML = "D++"; 
+        break;	
+	case 8:
+		document.getElementById(Atributo).innerHTML = "D+++"; 
+        break;	
+	case 9:
+		document.getElementById(Atributo).innerHTML = "C"; 
+        break;	
+	case 10:
+		document.getElementById(Atributo).innerHTML = "C+"; 
+        break;	
+	case 11:
+		document.getElementById(Atributo).innerHTML = "C++"; 
+        break;	
+	case 12:
+		document.getElementById(Atributo).innerHTML = "C+++"; 
+        break;	
+	case 13:
+		document.getElementById(Atributo).innerHTML = "B"; 
+        break;	
+	case 14:
+		document.getElementById(Atributo).innerHTML = "B+"; 
+        break;	
+	case 15:
+		document.getElementById(Atributo).innerHTML = "B++"; 
+        break;	
+	case 16:
+		document.getElementById(Atributo).innerHTML = "B+++"; 
+        break;	
+	case 17:
+		document.getElementById(Atributo).innerHTML = "A"; 
+        break;	
+	case 18:
+		document.getElementById(Atributo).innerHTML = "A+"; 
+        break;	
+	case 19:
+		document.getElementById(Atributo).innerHTML = "A++"; 
+        break;	
+	case 20:
+		document.getElementById(Atributo).innerHTML = "A+++"; 
+        break;	
+	
+	
+    default:
+		document.getElementById(Atributo).innerHTML = "XXX"; 
+} 
+}
+function total(){
+	
+fuerza	= document.getElementById("Fisico").innerHTML;
+
+agilidad	= document.getElementById("Agilidad").innerHTML;
+
+resistencia	= document.getElementById("Resistencia").innerHTML;
+
+mana	= document.getElementById("Mana").innerHTML;
+
+suerte	= document.getElementById("Suerte").innerHTML;
+
+np	= document.getElementById("NP").innerHTML;
+
+ 
+
+ 
+
+
+
+document.getElementById("Total").innerHTML = " [list][*][b]Fuerza:[/b]" + 
+fuerza  + "[*] [b]Resistencia:[/b] "+ resistencia + "[*] [b]Agilidad:[/b] " + agilidad + " [*][b]Mana:[/b] " + mana +  "[*] [b]Suerte:[/b] " + suerte +"[*] [b]NP/MC:[/b] " + np   +"[/list] "; 
+
+
+}
+
+
+
+function ActualizarEstadisticas1 (){
+	multiplicador = 1;
+	Actualizar();
+}
+
+function ActualizarEstadisticas2 (){
+	multiplicador = 2;	
+	Actualizar()
+}
+function ActualizarEstadisticas3 (){
+	multiplicador = 3;
+	Actualizar();
+}
+
+
+function Actualizar()
+{
+		document.getElementById("cantidad_total_de_atributos_gastados").innerHTML = cantidad_total_de_atributos_gastados;  
+	switch(multiplicador) {
+    case 1:
+		dfisico = Fisico *5 * ((Fisico /100 )+ 1);
+		cuerpoacuerpo = Fisico *5;
+		vida = (Resistencia *10) + 60;
+		bloqueo = Resistencia *5 * ((Resistencia /100 )+ 1) ;
+		esquiva = Agilidad *5;
+		distancia = Agilidad *5 * ((Agilidad /100 )+ 1);
+		himpacomagia = Mana * 5;
+		hdañocomagia = Mana * 5;
+		hdefensacomagia = Mana * 5;
+		impacomagia = Mana * 3;
+		dañocomagia = Mana * 3;
+		defensacomagia = Mana * 3;
+		rangocritico = Math.floor((Suerte-1)/3);
+		multnombre = "Maximo";
+	
+		
+        break;
+    case 2:
+		
+		dfisico = Fisico *4 * ((Fisico /100 )+ 1);
+		cuerpoacuerpo = Fisico *4;
+		vida = (Resistencia *8) + 60;
+		bloqueo = Resistencia *4 * ((Resistencia /100 )+ 1) ;
+		esquiva = Agilidad *4;
+		distancia = Agilidad *4 * ((Agilidad /100 )+ 1);
+		himpacomagia = Mana * 4;
+		hdañocomagia = Mana * 4;
+		hdefensacomagia = Mana * 4;
+		impacomagia = Mana * 2.5;
+		dañocomagia = Mana * 2.5;
+		defensacomagia = Mana * 2.5;
+		rangocritico = Math.floor((Suerte-1)/3);
+		multnombre = "Medio";
+
+
+        break;
+	 case 3:
+		
+		dfisico = Fisico *3 * ((Fisico /100 )+ 1);
+		cuerpoacuerpo = Fisico *3;
+		vida = (Resistencia *6) + 60;
+		bloqueo = Resistencia *3 * ((Resistencia /100 )+ 1) ;
+		esquiva = Agilidad *3;
+		distancia = Agilidad *3 * ((Agilidad /100 )+ 1);
+		himpacomagia = Mana * 3;
+		hdañocomagia = Mana * 3;
+		hdefensacomagia = Mana * 3;
+		impacomagia = Mana * 2;
+		dañocomagia = Mana * 2;
+		defensacomagia = Mana * 2;
+		rangocritico = Math.floor((Suerte-1)/3);
+		multnombre = "Menor";
+	
+
+       	break;
+	
+		
+		
+	}
+
+
+
+
+ 
+ 
+           
+Nombre = document.getElementById("NombrePersonaje").value;
+
+Clase = document.getElementById("ClasePersonaje").value;
+
+Nivel = document.getElementById("NivelPersonaje").value;
+
+
+//Aca va la querry
+document.getElementById("Total2").innerHTML= "INSERT INTO `personajes`(  `nombre`, `clase`, `nivel`, `vida`, `ImpactoCuerpoACuerpo`, `ImpactoADistancia`, `ImpactoMagico`, `ImpactoMagicoConHabilidades`, `Bloqueo`, `Esquiva`, `DefensaMagica`, `DefensaMagicaConHabilidades`, `DanoMagico`, `DanoFisico`, `DanoMagicoConHabilidades`, `DadoCritico`, `PoderCritico`, `RazaDragon`, `RazaDivinidad`, `RazaEspiritu`, `RazaDeadApostle`, `RazaOni`, `RazaWerewolf`, `RazaMagi`, `RazaHumanoNormal`, `RazaHomunculo`) VALUES ('" + Nombre  + "','" + Clase + "'," + Nivel +","+ vida+ "," + cuerpoacuerpo + "," +distancia + "," + impacomagia + "," +himpacomagia+ "," + bloqueo + "," + esquiva + ","+defensacomagia +"," +hdefensacomagia +"," +dañocomagia + "," + dfisico+ "," +hdañocomagia+ "," + (25- rangocritico) + "," +( 2+((Suerte*2)*0.01)) +"," +RazaDragon+"," + RazaDivinidad+"," +RazaEspiritu+"," + RazaDeadApostle+"," + RazaOni+"," + RazaWerewolf+"," + RazaMagi+"," + RazaHumanoNormal+"," + RazaHomunculo + ")";
+
+
+
+
+
+ 
+
+
+	document.getElementById("daño fisico").innerHTML = dfisico; 
+		
+	document.getElementById("impacto cuerpo a cuerpo").innerHTML = cuerpoacuerpo; 
+		 
+	document.getElementById("vida").innerHTML = vida; 
+		  
+		
+	document.getElementById("bloqueo").innerHTML = bloqueo;
+	
+	document.getElementById("impacto a distancia").innerHTML = distancia;
+			 
+	document.getElementById("esquiva").innerHTML = esquiva;
+			 
+			 
+	document.getElementById("impacto mágico").innerHTML = impacomagia;
+	
+	 
+	document.getElementById("defensa mágica").innerHTML = defensacomagia;
+	
+	
+	document.getElementById("daño mágico").innerHTML = dañocomagia;
+	
+	
+	document.getElementById("habilidades impacto mágico").innerHTML = himpacomagia;
+	
+	 
+	document.getElementById("habilidades defensa mágica").innerHTML = hdefensacomagia;
+	
+	
+	document.getElementById("habilidades daño mágico").innerHTML = hdañocomagia;       
+			 
+	document.getElementById("rango critico").innerHTML =  (25- rangocritico);   
+	 
+ 	
+ 		
+
+}
+
+function SetDragon() {
+
+  var checkBox = document.getElementById("DragonCheck");
+  if (checkBox.checked == true){
+    RazaDragon = 1;
+  } else {
+    RazaDragon = 0;
+  }
+} 
+
+
+
+function SetDivinidad() {
+
+  var checkBox = document.getElementById("DivinidadCheck");
+ 
+  if (checkBox.checked == true){
+    RazaDivinidad   = 1;
+  } else {
+    RazaDivinidad = 0;
+  }
+} 
+
+
+
+function SetEspiritu() {
+
+  var checkBox = document.getElementById("EspirituCheck");
+ 
+  if (checkBox.checked == true){
+    RazaEspiritu = 1;
+  } else {
+    RazaEspiritu = 0;
+  }
+} 
+
+
+
+function SetDeadApostle() {
+
+  var checkBox = document.getElementById("DeadApostleCheck");
+ 
+  if (checkBox.checked == true){
+    RazaDeadApostle    = 1;
+  } else {
+    RazaDeadApostle    = 0;
+  }
+} 
+
+function SetOni() {
+
+  var checkBox = document.getElementById("OniCheck");
+ 
+  if (checkBox.checked == true){
+    RazaOni       = 1;
+  } else {
+    RazaOni       = 0;
+  }
+} 
+
+function SetDeadApostle() {
+
+  var checkBox = document.getElementById("DeadApostleCheck");
+ 
+  if (checkBox.checked == true){
+    RazaDeadApostle    = 1;
+  } else {
+    RazaDeadApostle    = 0;
+  }
+} 
+
+function SetWerewolf() {
+
+  var checkBox = document.getElementById("WerewolfCheck");
+ 
+  if (checkBox.checked == true){
+    RazaWerewolf=   1;
+  } else {
+    RazaWerewolf=   0;
+  }
+} 
+
+function SetMagi() {
+
+  var checkBox = document.getElementById("MagiCheck");
+ 
+  if (checkBox.checked == true){
+    RazaMagi= 1;
+  } else {
+    RazaMagi=  0;
+  }
+} 
+
+function SetHumanoNormal() {
+
+  var checkBox = document.getElementById("NormalCheck");
+ 
+  if (checkBox.checked == true){
+   RazaHumanoNormal= 1;
+  } else {
+    RazaHumanoNormal=  0;
+  }
+} 
+
+
+function SetHomunculo() {
+
+  var checkBox = document.getElementById("HomunculoCheck");
+ 
+  if (checkBox.checked == true){
+   RazaHomunculo = 1;
+  } else {
+    RazaHomunculo=  0;
+  }
+} 
+
+
+
+</script>
+
+
+</body>
+</html>
